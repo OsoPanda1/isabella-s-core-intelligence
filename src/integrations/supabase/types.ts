@@ -14,16 +14,353 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      artifacts: {
+        Row: {
+          created_at: string
+          id: string
+          kind: string
+          mime: string
+          model: string | null
+          prompt: string
+          storage_path: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          kind: string
+          mime: string
+          model?: string | null
+          prompt: string
+          storage_path: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          kind?: string
+          mime?: string
+          model?: string | null
+          prompt?: string
+          storage_path?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      conversations: {
+        Row: {
+          created_at: string
+          id: string
+          preset_id: string
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          preset_id?: string
+          title?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          preset_id?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      ledger_entries: {
+        Row: {
+          created_at: string
+          event_type: string
+          hash: string
+          id: string
+          module: string
+          payload: Json
+          prev_hash: string
+          risk: string | null
+          seq: number
+          status: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          event_type: string
+          hash: string
+          id?: string
+          module?: string
+          payload?: Json
+          prev_hash: string
+          risk?: string | null
+          seq: number
+          status?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          event_type?: string
+          hash?: string
+          id?: string
+          module?: string
+          payload?: Json
+          prev_hash?: string
+          risk?: string | null
+          seq?: number
+          status?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      messages: {
+        Row: {
+          content: string
+          conversation_id: string
+          created_at: string
+          decision: Json | null
+          id: string
+          latency_ms: number | null
+          role: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          conversation_id: string
+          created_at?: string
+          decision?: Json | null
+          id?: string
+          latency_ms?: number | null
+          role: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          conversation_id?: string
+          created_at?: string
+          decision?: Json | null
+          id?: string
+          latency_ms?: number | null
+          role?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "messages_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          display_name: string | null
+          email: string | null
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string | null
+          email?: string | null
+          id: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string | null
+          email?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
+      skill_executions: {
+        Row: {
+          created_at: string
+          error: string | null
+          id: string
+          input: string
+          latency_ms: number | null
+          output: string | null
+          skill_id: string
+          status: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          error?: string | null
+          id?: string
+          input: string
+          latency_ms?: number | null
+          output?: string | null
+          skill_id: string
+          status?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          error?: string | null
+          id?: string
+          input?: string
+          latency_ms?: number | null
+          output?: string | null
+          skill_id?: string
+          status?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "skill_executions_skill_id_fkey"
+            columns: ["skill_id"]
+            isOneToOne: false
+            referencedRelation: "skills"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      skills: {
+        Row: {
+          category: string
+          created_at: string
+          description: string
+          id: string
+          model: string
+          name: string
+          prompt: string
+          risk_level: string
+          status: string
+          updated_at: string
+          user_id: string
+          version: string
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          description?: string
+          id?: string
+          model?: string
+          name: string
+          prompt: string
+          risk_level?: string
+          status?: string
+          updated_at?: string
+          user_id: string
+          version?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string
+          id?: string
+          model?: string
+          name?: string
+          prompt?: string
+          risk_level?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+          version?: string
+        }
+        Relationships: []
+      }
+      telemetry_events: {
+        Row: {
+          created_at: string
+          detail: Json
+          id: string
+          kind: string
+          latency_ms: number | null
+          ok: boolean
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          detail?: Json
+          id?: string
+          kind: string
+          latency_ms?: number | null
+          ok?: boolean
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          detail?: Json
+          id?: string
+          kind?: string
+          latency_ms?: number | null
+          ok?: boolean
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
+      ledger_append: {
+        Args: {
+          _event_type: string
+          _module: string
+          _payload: Json
+          _risk: string
+          _status: string
+        }
+        Returns: {
+          created_at: string
+          event_type: string
+          hash: string
+          id: string
+          module: string
+          payload: Json
+          prev_hash: string
+          risk: string | null
+          seq: number
+          status: string | null
+          user_id: string
+        }
+        SetofOptions: {
+          from: "*"
+          to: "ledger_entries"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "sovereign" | "architect" | "operator"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +487,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["sovereign", "architect", "operator"],
+    },
   },
 } as const
