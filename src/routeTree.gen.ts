@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiIsabellaRouteImport } from './routes/api/isabella'
+import { Route as ApiIsabellaVoiceRouteImport } from './routes/api/isabella-voice'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiIsabellaRoute = ApiIsabellaRouteImport.update({
+  id: '/api/isabella',
+  path: '/api/isabella',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiIsabellaVoiceRoute = ApiIsabellaVoiceRouteImport.update({
+  id: '/api/isabella-voice',
+  path: '/api/isabella-voice',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/isabella': typeof ApiIsabellaRoute
+  '/api/isabella-voice': typeof ApiIsabellaVoiceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/isabella': typeof ApiIsabellaRoute
+  '/api/isabella-voice': typeof ApiIsabellaVoiceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/isabella': typeof ApiIsabellaRoute
+  '/api/isabella-voice': typeof ApiIsabellaVoiceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/api/isabella' | '/api/isabella-voice'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/api/isabella' | '/api/isabella-voice'
+  id: '__root__' | '/' | '/api/isabella' | '/api/isabella-voice'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiIsabellaRoute: typeof ApiIsabellaRoute
+  ApiIsabellaVoiceRoute: typeof ApiIsabellaVoiceRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/isabella': {
+      id: '/api/isabella'
+      path: '/api/isabella'
+      fullPath: '/api/isabella'
+      preLoaderRoute: typeof ApiIsabellaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/isabella-voice': {
+      id: '/api/isabella-voice'
+      path: '/api/isabella-voice'
+      fullPath: '/api/isabella-voice'
+      preLoaderRoute: typeof ApiIsabellaVoiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiIsabellaRoute: ApiIsabellaRoute,
+  ApiIsabellaVoiceRoute: ApiIsabellaVoiceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
