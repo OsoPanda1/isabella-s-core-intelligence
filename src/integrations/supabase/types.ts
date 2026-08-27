@@ -358,6 +358,7 @@ export type Database = {
           isSetofReturn: false
         }
       }
+      ledger_verify: { Args: never; Returns: Json }
     }
     Enums: {
       app_role: "sovereign" | "architect" | "operator"
