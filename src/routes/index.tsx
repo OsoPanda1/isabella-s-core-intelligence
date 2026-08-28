@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
+import { CinematicIntro } from "@/components/intro/CinematicIntro";
+import { type IntroPhase } from "@/components/intro/timeline";
 import { CommandLine } from "@/components/isabella/CommandLine";
 import { MessageStream } from "@/components/isabella/MessageStream";
 import { TelemetryPanel } from "@/components/isabella/TelemetryPanel";
@@ -31,8 +33,18 @@ function Index() {
   const isabella = useIsabellaAgent();
   const [panel, setPanel] = useState(false);
   const [activeTab, setActiveTab] = useState<"telemetry" | "memory" | "skills">("telemetry");
+  const [introComplete, setIntroComplete] = useState(false);
+  const [currentPhase, setCurrentPhase] = useState<IntroPhase>("VOID");
   const lastInput = useRef("");
   const fileRef = useRef<HTMLInputElement | null>(null);
+
+  const handleIntroComplete = useCallback(() => {
+    setIntroComplete(true);
+  }, []);
+
+  const handlePhaseChange = useCallback((phase: IntroPhase) => {
+    setCurrentPhase(phase);
+  }, []);
 
   const send = (text: string) => {
     lastInput.current = text;
@@ -41,8 +53,18 @@ function Index() {
 
   const turns = isabella.messages.filter((m) => m.role === "user").length;
 
+  if (!introComplete) {
+    return (
+      <CinematicIntro
+        onComplete={handleIntroComplete}
+        onPhaseChange={handlePhaseChange}
+        skipOnReducedMotion
+      />
+    );
+  }
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen animate-intro-fade-in">
       <header className="hairline sticky top-0 z-20 backdrop-blur-xl">
         <div className="mx-auto flex max-w-[1500px] items-center justify-between gap-4 px-5 py-4 sm:px-8">
           <div>
