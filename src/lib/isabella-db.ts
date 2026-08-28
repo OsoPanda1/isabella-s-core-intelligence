@@ -37,8 +37,8 @@ export async function ledgerAppend(input: {
   const { data, error } = await supabase.rpc("ledger_append", {
     _event_type: input.eventType,
     _module: input.module ?? "CROWN",
-    _risk: input.risk ?? null,
-    _status: input.status ?? null,
+    _risk: input.risk ?? "low",
+    _status: input.status ?? "allowed",
     _payload: (input.payload ?? {}) as Json,
   });
   if (error) throw new Error(error.message);
