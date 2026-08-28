@@ -2,9 +2,10 @@
 
 > **Arquitectura Cognitiva Híbrida, Gobernanza Ética y Soberanía Territorial**
 
-![Version](https://img.shields.io/badge/version-4.2.0-blue)
+![Version](https://img.shields.io/badge/version-5.0.0-blue)
 ![License](https://img.shields.io/badge/license-CC%20BY%204.0-green)
 ![Status](https://img.shields.io/badge/status-Production%20Ready-brightgreen)
+![Architecture](https://img.shields.io/badge/architecture-Governed%20Federated%20Cognitive%20AI-purple)
 
 ---
 
@@ -13,16 +14,19 @@
 1. [Qué es Isabella](#qué-es-isabella)
 2. [Arquitectura](#arquitectura)
 3. [Stack Tecnológico](#stack-tecnológico)
-4. [Módulos del Sistema](#módulos-del-sistema)
-5. [Pipeline C.R.O.W.N.](#pipeline-crown)
-6. [Sistema de Memoria](#sistema-de-memoria)
-7. [Seguridad y Autenticación](#seguridad-y-autenticación)
-8. [API Keys y Acceso](#api-keys-y-acceso)
-9. [Intro Cinematográfico](#intro-cinematográfico)
-10. [Instalación y Desarrollo](#instalación-y-desarrollo)
-11. [Posicionamiento Global](#posicionamiento-global)
-12. [Porcentajes de Avance](#porcentajes-de-avance)
-13. [Roadmap](#roadmap)
+4. [Navegación Oculta (4 Navbars)](#navegación-oculta)
+5. [Módulos del Sistema](#módulos-del-sistema)
+6. [Pipeline C.R.O.W.N.](#pipeline-crown)
+7. [Subsistemas Enterprise](#subsistemas-enterprise)
+8. [TAMV Kernel y Federaciones](#tamv-kernel-y-federaciones)
+9. [Sistema de Memoria](#sistema-de-memoria)
+10. [Seguridad y Autenticación](#seguridad-y-autenticación)
+11. [Estética TEMA](#estética-tema)
+12. [Intro Cinematográfico](#intro-cinematográfico)
+13. [Instalación y Desarrollo](#instalación-y-desarrollo)
+14. [Estructura del Proyecto](#estructura-del-proyecto)
+15. [Roadmap](#roadmap)
+16. [Licencia](#licencia)
 
 ---
 
@@ -45,6 +49,9 @@ Isabella **es**:
 - Un sistema de memoria jerárquica de 5 scopes
 - Una interfaz territorial con soberanía humana
 - Un framework de agentes con skills extensibles
+- Un sistema de navegación oculta, modular y expandible
+- Un ecosistema enterprise con subsistemas NODO, PRISMA, MEMORIA, ESCUDO, TEMA
+- Un kernel event-driven con 7 federaciones TAMV
 
 ### Doctrina de Operación
 
@@ -63,8 +70,8 @@ Isabella implementa una arquitectura de **7 Fabrics** (tejidos) distribuidos:
 │                    CROWN GATEWAY                            │
 │              Orquestación • Ruteo • Arbitraje               │
 ├─────────┬─────────┬─────────┬─────────┬─────────┬──────────┤
-│ COGNITIVE│ MEMORY  │ ACTION  │ TRUST   │EXPERIENCE│ECONOMIC │
-│  FABRIC  │ FABRIC  │ FABRIC  │ FABRIC  │ FABRIC  │ FABRIC  │
+│COGNITIVE│ MEMORY  │ ACTION  │ TRUST   │EXPERIENCE│ECONOMIC │
+│ FABRIC  │ FABRIC  │ FABRIC  │ FABRIC  │ FABRIC  │ FABRIC  │
 ├─────────┴─────────┴─────────┴─────────┴─────────┴──────────┤
 │                INFRASTRUCTURE FABRIC                        │
 │         Despliegue • Monitoreo • Resiliencia                │
@@ -81,6 +88,12 @@ Isabella implementa una arquitectura de **7 Fabrics** (tejidos) distribuidos:
 | **ORION** | Ejecución, generación técnica | Esmeralda |
 | **ARGUS** | Gobernanza, defensa, veto | Ámbar |
 
+### Pipeline Canónico
+
+```
+PERCEIVE → REMEMBER → POLICY GATE → DECIDE → ACT → AUDIT
+```
+
 ---
 
 ## Stack Tecnológico
@@ -89,74 +102,207 @@ Isabella implementa una arquitectura de **7 Fabrics** (tejidos) distribuidos:
 |------|-----------|
 | **Frontend** | React 19, TanStack Router/Start |
 | **UI** | Tailwind CSS v4, Radix UI, Lucide Icons |
-| **3D** | Three.js (intro cinematográfico) |
-| **Estado** | React Hooks personalizados |
+| **Estado** | React Hooks personalizados, Context + Reducer |
 | **Backend** | Supabase (PostgreSQL + Auth) |
 | **AI Gateway** | Lovable API Gateway (Gemini 3.6 Flash) |
 | **Validación** | Zod (esquemas tipados) |
-| **Build** | Vite 8, TypeScript 5.8 |
+| **Build** | Vite 8, TypeScript 5.8 (ESM) |
 | **Seguridad** | Crypto nativo Node.js, HMAC-SHA512 |
+| **3D** | Three.js (intro cinematográfico) |
+
+---
+
+## Navegación Oculta
+
+### Principio
+
+Al iniciar la plataforma, **ninguna navbar aparece desplegada**. La interfaz muestra únicamente:
+
+- Barra superior mínima
+- Iconos de acceso para las 4 navegaciones
+- Indicadores esenciales de estado
+- Área principal de trabajo
+
+### Las 4 Navbars
+
+| Icono | Navbar | Función | Superficie |
+|-------|--------|---------|------------|
+| ◈ | **NAV 1** | Identidad y contexto | Navy profundo |
+| ✦ | **NAV 2** | Operación y creación | Navy institucional |
+| ⌘ | **NAV 3** | Gobernanza y control | Azul petróleo |
+| ◇ | **NAV 4** | Monetización y ecosistema | Navy + cobre |
+
+### Comportamiento
+
+- **Al inicio**: 4 iconos discretos + área principal máxima
+- **Click en icono**: Panel se despliega desde su lado, overlay oscurece
+- **Escape / overlay**: Cierra navbar, foco regresa al trigger
+- **Modo normal**: 1 navbar abierta a la vez
+- **Modo comparativo**: 2 navbars en pantallas amplias (limitado)
+
+### NAV 1 — Identidad y contexto
+
+Informa dónde se encuentra la persona dentro del sistema.
+
+- Isabella (espacio actual: personal, organización, comunidad, administración)
+- Territorio (Mineral del Monte, Hidalgo, mapa territorial)
+- Proyecto actual (resumen, participantes, estado, cambiar)
+- Sesión (seguridad, dispositivo, actividad, cerrar)
+
+### NAV 2 — Operación y creación
+
+Navbar principal para trabajar, explorar y construir.
+
+- Inicio (vista general, actividad reciente, continuar, favoritos)
+- Explorar territorio (lugares, rutas, cultura, naturaleza, gastronomía, capas)
+- Crear (experiencia, recorrido, proyecto, misión, contenido, colección)
+- Inteligencia artificial (conversar, analizar, generar, investigar, itinerarios, historial)
+- Datos y mapas (mapa principal, capas, POI, geometrías, indicadores, exportaciones)
+- Experiencias (rutas publicadas, misiones, gamificación, narrativas, audio, inmersivas)
+- Biblioteca (documentos, imágenes, audio, video, 3D, fuentes)
+
+### NAV 3 — Gobernanza y control
+
+Hace visibles los controles que normalmente permanecen ocultos.
+
+- Memoria (activa, origen, guardados, preferencias, correcciones, eliminar)
+- Evidencia (fuentes, criterios, confianza, actualización, limitaciones)
+- Autorizaciones (personales, equipo, pendientes, aprobaciones, revocaciones)
+- Auditoría (historial, cambios, acciones IA, económicas, exportar)
+- Seguridad (autenticación, dispositivos, sesiones, tokens, políticas)
+- Privacidad (datos, consentimientos, uso, descarga, eliminación)
+- Configuración (apariencia, accesibilidad, idioma, voz, animaciones, integraciones)
+
+### NAV 4 — Monetización y ecosistema
+
+Presenta el valor económico, social y territorial con desglose completo.
+
+- Resumen financiero (ingresos, costos, neto, pendientes, balance)
+- Por función (experiencias, reservas, suscripciones, IA, premium, donaciones, patrocinios, afiliaciones)
+- Por método (tarjeta, transferencia, suscripción, crédito, moneda local, recompensas)
+- Por red social (comunidad, campañas, alcance, conversión, atribuidos, distribuidas)
+- Distribución territorial (comunidades, locales, proveedores, impacto, porcentaje)
+- Métodos de pago (cuentas, facturación, preferencias, límites, verificación)
+- Transparencia económica (comisiones, impuestos, consumo IA, reembolsos, historial)
+
+### Desglose de Operación Económica
+
+Cada operación muestra su composición completa:
+
+```
+OPERACIÓN · EXPERIENCIA TERRITORIAL
+
+Ingreso bruto                         $1,240.00
+Comisión de plataforma                  -$62.00
+Procesamiento de pago                   -$31.00
+Consumo de inteligencia artificial      -$18.50
+Distribución comunitaria               -$124.00
+Ingreso neto                           $1,004.50
+
+Método: tarjeta digital
+Red: Isabella Comunidad
+Estado: liquidación programada
+Reversible: sí, durante 48 horas
+Autorización: confirmada
+```
+
+### Arquitectura Técnica
+
+```typescript
+type NavigationNode = {
+  id: string;
+  label: string;
+  description?: string;
+  icon?: string;
+  type: "folder" | "section" | "action";
+  children?: NavigationNode[];
+  permission?: string;
+  badge?: { value: string | number; tone: "info" | "success" | "warning" | "danger" };
+  requiresConfirmation?: boolean;
+  reversible?: boolean;
+};
+
+type NavigationState = {
+  activeNavbar: "context" | "workspace" | "governance" | "monetization" | null;
+  expandedFolders: Record<string, boolean>;
+  activeNode: string | null;
+  previousFocusId: string | null;
+  comparisonMode: boolean;
+  comparisonNavbars: [NavbarId, NavbarId] | null;
+};
+```
+
+### Componentes
+
+```
+src/components/navigation/
+├── NavigationShell.tsx          ← Shell completo: topbar + triggers + panels
+├── NavigationStateProvider.tsx   ← Context + reducer (8 actions)
+├── NavigationPanel.tsx          ← Panel deslizante con focus trap
+├── NavigationTrigger.tsx        ← Botón de activación (aria-*)
+├── AccordionFolder.tsx          ← Carpeta retráctile con 8 estados
+├── ContextNavbar.tsx            ← NAV 1
+├── WorkspaceNavbar.tsx          ← NAV 2
+├── GovernanceNavbar.tsx         ← NAV 3
+├── MonetizationNavbar.tsx       ← NAV 4
+├── EconomicBreakdown.tsx        ← Desglose de operación económica
+└── types.ts                     ← NavigationNode, NavbarId, EconomicOperation
+```
+
+### Accesibilidad
+
+- `aria-label` descriptivo en cada trigger
+- `aria-expanded` y `aria-controls` en cada botón
+- `aria-live="polite"` para anuncios de cambio
+- Focus trap dentro del panel abierto
+- Restauración de foco al cerrar
+- `prefers-reduced-motion` compatibility
+- Diferenciación semántica sin depender de color
 
 ---
 
 ## Módulos del Sistema
 
-### 1. Motor Cognitivo (`src/lib/crown.ts`)
+### 1. Motor C.R.O.W.N. (`src/lib/crown.ts`)
 
-El corazón del sistema C.R.O.W.N.:
+El corazón del sistema:
 
 - **Intent Assessment**: Clasifica la intención del usuario
 - **Policy Gate**: Evalúa riesgo y aplica políticas
 - **Node Router**: Decide qué nodo responde
 - **Risk Assessment**: Calcula nivel de riesgo
 - **Audit Trail**: Registra cada decisión
+- **System Prompt**: Genera el prompt canónico para el LLM
 
-### 2. Sistema de Memoria (`src/lib/agent/memory.ts`)
+### 2. Pipeline C.R.O.W.N. (`src/lib/agent/pipeline.ts`)
 
-Memoria jerárquica de 5 scopes:
-
-```typescript
-type MemoryScope =
-  | "immediate"    // Ventana corta de atención
-  | "session"      // Contexto de conversación activa
-  | "project"      // Contexto técnico del repositorio
-  | "territorial"  // Conocimiento del territorio
-  | "historical";  // Memoria persistente soberana
-```
-
-**Capacidades**:
-- Búsqueda semántica por relevancia
-- Promoción automática entre scopes
-- Retención mínima necesaria
-- Respeto a borrado y caducidad
-
-### 3. Sistema de Skills (`src/lib/agent/skills.ts`)
-
-Registro extensible de habilidades:
+Pipeline de 6 etapas ejecutado en el servidor:
 
 ```typescript
-interface Skill {
-  id: string;
-  name: string;
-  description: string;
-  risk: "low" | "medium" | "high" | "critical";
-  execute: (input: unknown) => Promise<unknown>;
-}
+// 1. Perceive — Sanitiza entrada, genera traceId
+// 2. Remember — Recupera contexto desde scopes
+// 3. Policy Gate — ARGUS evalúa riesgo
+// 4. Decide — CROWN pondera nodos
+// 5. Act — Ejecuta herramientas autorizadas
+// 6. Audit — Registra DecisionRecord + AuditBundle
 ```
 
-**Skills incluidos**:
-- `memory_search` - Búsqueda en memoria
-- `web_search` - Búsqueda web
-- `code_analysis` - Análisis de código
-- `policy_check` - Verificación de políticas
-- `territory_query` - Consulta territorial
-- `skill_manage` - Gestión de skills
-- `memory_manage` - Gestión de memoria
-- `system_status` - Estado del sistema
+### 3. Hook Principal (`src/lib/useIsabellaAgent.ts`)
+
+Hook que orquesta todo el pipeline:
+
+- `send(text)` — Envía mensaje al pipeline
+- `stop()` — Detiene procesamiento
+- `reset()` — Limpia conversación
+- `messages` — Lista de mensajes
+- `decision` — Última decisión C.R.O.W.N.
+- `tokens` — Conteo de tokens
+- `preset` — Configuración activa
+- `locale` — Idioma actual
 
 ### 4. Intro Cinematográfico (`src/components/intro/`)
 
-Secuencia de activación de 50 segundos:
+Secuencia de activación de 50 segundos con Three.js:
 
 | Fase | Tiempo | Descripción |
 |------|--------|-------------|
@@ -169,58 +315,216 @@ Secuencia de activación de 50 segundos:
 | HUMMINGBIRD | 39-47s | Colibrí con vuelo |
 | INTERFACE_REVEAL | 47-50s | HUD y estado |
 
-**Características**:
-- Three.js vanilla para control total
-- Detección automática de performance (high/medium/low)
-- `prefers-reduced-motion` compatibility
-- Parallax de mouse
-- Cámara cinematográfica con 4 planos
-- Botón "Saltar →"
+---
 
-### 5. Módulo de Seguridad (`src/lib/security/`)
+## Subsistemas Enterprise
 
-Infraestructura completa de seguridad:
+### NODO — Multi-Provider Adapter Layer
 
-- **Crypto**: HMAC-SHA512, AES-256-GCM, scrypt
-- **API Keys**: Generación 512 bytes, rotación, validación
-- **Auth**: Middleware con soporte API Key, session, HMAC
-- **Headers**: CSP, HSTS, CORS, X-Frame-Options
-- **Sanitization**: XSS, SQL, filename, URL, input
+`src/lib/nodo/provider.ts`
+
+Router multi-proveedor con fallback:
+
+```typescript
+// Proveedores soportados
+type Provider = "lovable" | "openai" | "anthropic";
+
+// Router con cadena de fallback
+const router = new Nodorouter({
+  providers: [lovable, openai, anthropic],
+  healthCheckInterval: 30_000,
+  failureThreshold: 3,
+});
+```
+
+**Capacidades**:
+- Health checks automáticos
+- Fallback en cascada
+- Normalización de mensajes, herramientas y respuestas
+- Métricas por proveedor (latencia, éxito, fallos)
+
+### PRISMA — Skill Registry
+
+`src/lib/prisma/index.ts`
+
+Registro extensible de habilidades con lifecycle:
+
+```typescript
+interface Skill {
+  id: string;
+  name: string;
+  description: string;
+  category: "memory" | "web" | "code" | "policy" | "territory" | "system";
+  risk: "low" | "medium" | "high" | "critical";
+  lifecycle: "active" | "stale" | "archived" | "pinned";
+  usageCount: number;
+  lastUsedAt: string | null;
+}
+```
+
+**Skills incluidos**: memory_search, web_search, code_analysis, policy_check, territory_query, skill_manage, memory_manage, system_status.
+
+### MEMORIA — Session Memory
+
+`src/lib/memoria/index.ts`
+
+Almacenamiento de memoria con búsqueda full-text:
+
+```typescript
+interface MemoryEntry {
+  id: string;
+  scope: "turn" | "session" | "project" | "territorial" | "historical";
+  content: string;
+  sensitivity: "public" | "internal" | "confidential" | "secret";
+  metadata: Record<string, unknown>;
+  ttlMs: number | null;
+  createdAt: string;
+  expiresAt: string | null;
+}
+```
+
+**Capacidades**:
+- Búsqueda full-text por contenido
+- Filtrado por scope y sensibilidad
+- TTL (time-to-live) para evicción
+- LRU eviction para optimizar memoria
+- Compactación automática
+
+### ESCUDO — Security Perimeter
+
+`src/lib/escudo/index.ts`
+
+Perímetro de seguridad con autorización en cascada:
+
+```typescript
+// Pipeline de autorización
+authCheck → permissionCheck → rateLimitCheck → approvalRequired
+
+// Eventos de auditoría
+type AuditEvent = {
+  type: "auth_success" | "auth_failure" | "permission_denied" | "rate_limit" | "approval_required";
+  subject: string;
+  resource: string;
+  action: string;
+  result: "allow" | "deny";
+  timestamp: string;
+};
+```
+
+**Capacidades**:
+- Rate limiting configurable por ventana
+- Control de acceso basado en roles
+- Registro de eventos de auditoría
+- Integración con el pipeline C.R.O.W.N.
+
+### TEMA — Skin Engine
+
+`src/lib/tema/index.ts`
+
+Motor de pieles con paleta enterprise Isabella:
+
+```typescript
+const ISABELLA_PLATINUM: SkinDefinition = {
+  name: "Isabella Platinum",
+  colors: {
+    navy: "#0A1628",
+    petroleum: "#1A3A4A",
+    platinum: "#E5E4E2",
+    pearl: "#F8F7F4",
+    terracotta: "#C75B39",
+    copper: "#B87333",
+  },
+  surfaces: { ... },
+  typography: { ... },
+  animations: { ... },
+};
+```
 
 ---
 
-## Pipeline C.R.O.W.N.
+## TAMV Kernel y Federaciones
 
-Toda entrada pasa por este ciclo:
+### TAMVKernel
 
-```
-1. PERCEIVE
-   └─ Sanitiza entrada, genera traceId, normaliza metadatos
+`src/lib/tamv/kernel.ts`
 
-2. REMEMBER
-   └─ Recupera contexto desde scopes permitidos
+Kernel event-driven para el ecosistema TAMV:
 
-3. POLICY GATE
-   └─ ARGUS evalúa riesgo, reglas y restricciones
-   └─ Resultado: allowed | requires_approval | denied
-
-4. DECIDE
-   └─ CROWN pondera nodos y determina plan de acción
-
-5. ACT
-   └─ Solo ejecuta herramientas autorizadas y validadas
-
-6. AUDIT
-   └─ Registra DecisionRecord y AuditBundle
+```typescript
+class TAMVKernel {
+  register(service: DomainService): void;
+  emit(event: Partial<CivicEvent>, streamId?: string): Promise<StoredEvent>;
+  start(): void;
+  stop(): void;
+  getEventStore(): EventStore;
+}
 ```
 
-### Niveles de Decisión
+**Características**:
+- Event sourcing con EventStore en memoria
+- Registro dinámico de servicios de dominio
+- Publicación de CivicEvents con correlación
+- Verificación de integridad de streams
+- Circuit breaker para el bus de eventos
 
-| Nivel | Descripción |
-|-------|------------|
-| **Allowed** | Ejecución estándar con monitoreo |
-| **Requires Approval** | Pausa y confirmación humana |
-| **Denied** | Bloqueo inmediato y auditoría |
+### FederationBus
+
+`src/lib/tamv/federation.ts`
+
+Bus de eventos para las 7 federaciones TAMV:
+
+| Federación | ID | Responsabilidad |
+|------------|----|----|
+| **DEKATEOTL** | 1 | Identidad y acceso |
+| **ANUBIS** | 2 | Seguridad y sentinel |
+| **BOOKPI** | 3 | Ledger y auditoría |
+| **PHOENIX** | 4 | Economía y comercio |
+| **MDD_TAMV** | 5 | Kernel y orquestación |
+| **KAOS** | 6 | Media y broadcast |
+| **CHRONOS** | 7 | Infraestructura y operaciones |
+
+```typescript
+class FederationBus {
+  subscribe(federation: Federation, handler: EventHandler): void;
+  subscribeAll(handler: EventHandler): void;
+  publish(event: CivicEvent): Promise<void>;
+  getStatus(): FederationStatus[];
+  hasConsensus(approvedVotes: number): boolean; // 75% threshold
+}
+```
+
+### Eventos Cívicos
+
+```typescript
+type CivicEventType =
+  | "TOURISM_INTERACTION"
+  | "DICHO_CONSULTED"
+  | "PAYMENT_COMPLETED"
+  | "AI_INTERACTION"
+  | "CITY_FEEDBACK"
+  | "TERRITORY_REGISTERED"
+  | "TERRITORY_ACTIVATED"
+  | "SESSION_STARTED"
+  | "SESSION_INTERACTION_RECORDED"
+  | "DECISION_EVALUATED"
+  | "PAYMENT_INITIATED"
+  | "GEOFENCE_DEFINED"
+  | "SECURITY_ALERT"
+  | "SYSTEM_METRIC";
+```
+
+### EventStore
+
+```typescript
+interface StoredEvent extends CivicEvent {
+  streamId: string;
+  streamVersion: number;
+  globalPosition: number;
+  eventHash: string;
+  recordedAt: string;
+  metadata: { actorId?: string; causationId?: string; };
+}
+```
 
 ---
 
@@ -230,7 +534,7 @@ Toda entrada pasa por este ciclo:
 
 - **Cliente**: localStorage con encriptación
 - **Producción**: Supabase PostgreSQL
-- **Caché**: Memoria en tiempo de ejecución
+- **Caché**: MEMORIA session store con TTL
 
 ### Formato de Entrada
 
@@ -257,6 +561,7 @@ interface MemoryEntry {
 - Filtrado por scope, tags, fecha
 - Ordenamiento por relevancia
 - Límite configurable
+- Full-text search (FTS) en MEMORIA
 
 ---
 
@@ -265,13 +570,7 @@ interface MemoryEntry {
 ### Autenticación Criptográfica (512 bytes)
 
 ```typescript
-// Generar key de 512 bytes
 const { key, salt } = generate512ByteKey(passphrase);
-
-// Crear key desde entropía
-const key = create512ByteKeyFromEntropy(randomBytes(256));
-
-// HMAC-SHA512
 const signature = createHMAC512(key, data);
 const isValid = verifyHMAC512(key, data, signature);
 ```
@@ -281,15 +580,11 @@ const isValid = verifyHMAC512(key, data, signature);
 **Formato**: `isa_v1_<base64url>`
 
 ```typescript
-// Generar API key
 const { rawKey, keyHash, keyId } = generateAPIKey({
   name: "Production Key",
   scopes: ["cognitive:read", "cognitive:write"],
   expiresInDays: 90,
 });
-
-// Validar
-const result = validateAPIKey(apiKey, storedKeys, requiredScope);
 ```
 
 ### Headers de Seguridad
@@ -309,76 +604,47 @@ Permissions-Policy: camera=(), microphone=()
 - **Por hora**: 1,000 requests
 - **Por día**: 10,000 requests
 
-### Sanitización
+### Escudo (ESCUDO)
 
-- XSS: Escapar `<`, `>`, `"`, `'`, `/`
-- SQL: Escapar comillas, eliminar comments
-- Filenames: Solo `[a-zA-Z0-9._-]`
-- URLs: Solo `http://` y `https://`
-- Input: Longitud máxima 10,000 chars
+Pipeline de autorización en cascada:
+1. `authCheck` — Verifica identidad
+2. `permissionCheck` — Verifica permisos
+3. `rateLimitCheck` — Verifica límites
+4. `approvalRequired` — Verifica si requiere aprobación
 
 ---
 
-## API Keys y Acceso
+## Estética TEMA
 
-### Crear API Key
+### Paleta Enterprise
 
-```typescript
-import { generateAPIKey, createAPIKeyRecord } from "@/lib/security";
+| Color | Hex | Uso |
+|-------|-----|-----|
+| **Navy** | `#0A1628` | Superficies principales, NAV 1, NAV 4 |
+| **Petroleum** | `#1A3A4A` | NAV 3, superficies de gobernanza |
+| **Platinum** | `#E5E4E2` | Texto activo, bordes, acentos |
+| **Pearl** | `#F8F7F4` | Texto principal, fondos claros |
+| **Terracotta** | `#C75B39` | Acciones, alertas, indicadores activos |
+| **Copper** | `#B87333` | Identidad premium, NAV 4 detalles |
 
-const generated = generateAPIKey({
-  name: "Mi Aplicación",
-  scopes: ["api:access", "cognitive:read"],
-  expiresInDays: 365,
-  rateLimit: {
-    requestsPerMinute: 30,
-    requestsPerHour: 500,
-    requestsPerDay: 5000,
-  },
-});
+### Principios de Diseño
 
-// Guardar solo el hash, NO la key cruda
-const record = createAPIKeyRecord(generated);
-apiKeyStore.add(record);
-```
+- **Silencioso al inicio**: interfaz limpia, sin elementos compitiendo
+- **Poderoso cuando se activa**: cada capa revela funcionalidad profunda
+- **Transparente en cada operación**: desglose completo de costos, permisos, estados
 
-### Usar API Key
+### UX Mandates
 
-```typescript
-// En headers HTTP
-headers: {
-  "X-API-Key": "isa_v1_...",
-  // o
-  "Authorization": "Bearer isa_v1_..."
-}
-```
-
-### Rotar API Key
-
-```typescript
-const result = rotateAPIKey(oldKeyId, {
-  name: "Nueva Key",
-  scopes: ["api:access"],
-});
-
-// result.newKey.rawKey — mostrar UNA vez
-// result.newRecord — guardar en base de datos
-```
-
-### Scopes Disponibles
-
-| Scope | Descripción |
-|-------|------------|
-| `cognitive:read` | Leer del motor cognitivo |
-| `cognitive:write` | Escribir al motor cognitivo |
-| `memory:read` | Leer de la memoria |
-| `memory:write` | Escribir a la memoria |
-| `pipeline:execute` | Ejecutar pipeline C.R.O.W.N. |
-| `skills:manage` | Gestionar skills |
-| `admin:read` | Acceso administrativo lectura |
-| `admin:write` | Acceso administrativo escritura |
-| `api:access` | Acceso general a la API |
-| `*` | Acceso total (solo admin) |
+1. Cada click → feedback inmediato
+2. Cada transición → propósito semántico
+3. Cada error → explicación + siguiente acción
+4. Cada decisión → evidencia + alcance + limitaciones
+5. Cada operación económica → desglose completo
+6. Cada uso de IA → modo + proveedor + consumo + control
+7. Cada memoria → origen + fecha + permisos + eliminación
+8. Cada acción → autorización + alcance + reversibilidad
+9. Cada voz → tono + velocidad + volumen ajustables
+10. Cada animación → accesibilidad + reducción de movimiento
 
 ---
 
@@ -402,16 +668,6 @@ El intro se muestra automáticamente al cargar la aplicación por primera vez.
 - Reduced Motion: Se salta automáticamente si el SO lo solicita
 - Performance: Se detecta automáticamente (high/medium/low)
 
-### Personalización
-
-```typescript
-<CinematicIntro
-  onComplete={() => setIntroComplete(true)}
-  onPhaseChange={(phase) => console.log(phase)}
-  skipOnReducedMotion={true}
-/>
-```
-
 ---
 
 ## Instalación y Desarrollo
@@ -419,20 +675,15 @@ El intro se muestra automáticamente al cargar la aplicación por primera vez.
 ### Requisitos
 
 - Node.js 18+
-- npm o bun
+- npm
 - Git
 
 ### Instalación
 
 ```bash
-# Clonar repositorio
 git clone https://github.com/OsoPanda1/isabella-s-core-intelligence.git
 cd isabella-s-core-intelligence
-
-# Instalar dependencias
 npm install
-
-# Iniciar servidor de desarrollo
 npm run dev
 ```
 
@@ -444,7 +695,6 @@ npm run dev
 | `npm run build` | Build de producción |
 | `npm run lint` | ESLint |
 | `npm run typecheck` | Verificación de tipos |
-| `npm run format` | Prettier |
 
 ### Variables de Entorno
 
@@ -458,126 +708,119 @@ VITE_AI_GATEWAY_URL=https://ai.gateway.lovable.dev
 VITE_AI_GATEWAY_API_KEY=xxx
 ```
 
-### Estructura del Proyecto
+---
+
+## Estructura del Proyecto
 
 ```
 src/
 ├── components/
-│   ├── intro/           # Intro cinematográfico
-│   └── isabella/        # Componentes de la UI
+│   ├── intro/              # Intro cinematográfico (Three.js)
+│   ├── isabella/           # Componentes UI
+│   │   ├── CommandLine.tsx
+│   │   ├── MessageStream.tsx
+│   │   ├── TelemetryPanel.tsx
+│   │   ├── MemoryPanel.tsx
+│   │   ├── SkillsPanel.tsx
+│   │   ├── PipelineIndicator.tsx
+│   │   └── Sidebar.tsx
+│   └── navigation/         # Arquitectura de navegación oculta
+│       ├── NavigationShell.tsx
+│       ├── NavigationStateProvider.tsx
+│       ├── NavigationPanel.tsx
+│       ├── NavigationTrigger.tsx
+│       ├── AccordionFolder.tsx
+│       ├── ContextNavbar.tsx      # NAV 1
+│       ├── WorkspaceNavbar.tsx    # NAV 2
+│       ├── GovernanceNavbar.tsx   # NAV 3
+│       ├── MonetizationNavbar.tsx # NAV 4
+│       ├── EconomicBreakdown.tsx
+│       └── types.ts
 ├── lib/
-│   ├── agent/           # Módulos del agente
-│   │   ├── memory.ts    # Sistema de memoria
-│   │   ├── pipeline.ts  # Pipeline C.R.O.W.N.
-│   │   ├── skills.ts    # Sistema de skills
-│   │   ├── fabrics.ts   # Definiciones de fabrics
-│   │   └── quantum.ts   # Quantum bridge
-│   ├── security/        # Seguridad
-│   │   ├── crypto.ts    # Criptografía
-│   │   ├── api-keys.ts  # Gestión de API keys
-│   │   ├── auth.ts      # Autenticación
-│   │   └── headers.ts   # Headers y sanitización
-│   ├── crown.ts         # Motor C.R.O.W.N.
-│   ├── crown-ui.ts      # UI de C.R.O.W.N.
-│   └── useIsabellaAgent.ts  # Hook principal
-├── i18n/                # Internacionalización
-├── routes/              # Rutas TanStack
-└── styles.css           # Estilos Tailwind
+│   ├── agent/              # Módulos del agente
+│   │   ├── memory.ts       # Sistema de memoria
+│   │   ├── pipeline.ts     # Pipeline C.R.O.W.N.
+│   │   ├── skills.ts       # Sistema de skills
+│   │   ├── fabrics.ts      # Definiciones de fabrics
+│   │   └── quantum.ts      # Quantum bridge
+│   ├── crown.ts            # Motor C.R.O.W.N.
+│   ├── crown-ui.ts         # UI de C.R.O.W.N.
+│   ├── useIsabellaAgent.ts # Hook principal (único runtime)
+│   ├── useIsabella.ts      # Deprecated wrapper
+│   ├── nodo/               # Multi-provider adapter
+│   │   ├── provider.ts     # Router, transports, health
+│   │   └── index.ts
+│   ├── prisma/             # Skill registry
+│   │   └── index.ts
+│   ├── memoria/            # Session memory
+│   │   └── index.ts
+│   ├── escudo/             # Security perimeter
+│   │   └── index.ts
+│   ├── tema/               # Skin engine
+│   │   └── index.ts
+│   ├── tamv/               # TAMV kernel + federations
+│   │   ├── kernel.ts       # Event-driven kernel
+│   │   ├── federation.ts   # 7-federation bus
+│   │   └── index.ts
+│   └── security/           # Seguridad
+│       ├── crypto.ts       # Criptografía
+│       ├── api-keys.ts     # Gestión de API keys
+│       ├── auth.ts         # Autenticación
+│       └── headers.ts      # Headers y sanitización
+├── i18n/                   # Internacionalización (es/en)
+├── routes/                 # Rutas TanStack
+│   ├── index.tsx           # Ruta principal
+│   └── api/
+│       ├── isabella.ts     # API endpoint (CROWN enforced)
+│       └── isabella-voice.ts
+└── styles.css              # Estilos Tailwind + TEMA
 ```
-
----
-
-## Posicionamiento Global
-
-### Categoría
-
-**Cognitive AI Governance Platform**
-
-Isabella se posiciona como una plataforma de **gobernanza cognitiva** que combina:
-
-1. **IA Conversacional** con contexto territorial
-2. **Gobernanza Zero Trust** para decisiones críticas
-3. **Memoria Jerárquica** para conocimiento persistente
-4. **Auditoría Total** para trazabilidad
-5. **Soberanía Humana** como principio fundamental
-
-### Diferenciadores
-
-| Característica | Isabella | ChatGPT | Copilot |
-|---------------|---------|---------|---------|
-| Gobernanza Zero Trust | ✅ | ❌ | ❌ |
-| Memoria Territorial | ✅ | ❌ | ❌ |
-| Auditoría Auditable | ✅ | ❌ | ❌ |
-| Soberanía Humana | ✅ | ❌ | ❌ |
-| Multi-Modelo | ✅ | ❌ | ❌ |
-| API Keys Nativas | ✅ | ✅ | ✅ |
-| Intro Cinematográfica | ✅ | ❌ | ❌ |
-
-### Mercado Objetivo
-
-- **Gobiernos locales** y municipios
-- **Organizaciones** con datos sensibles
-- **Desarrolladores** que necesitan IA gobernada
-- **Empresas** con requisitos de soberanía de datos
-- **Investigadores** en IA ética
-
----
-
-## Porcentajes de Avance
-
-### Estado Actual (v4.2.0)
-
-| Módulo | Estado | Avance |
-|--------|--------|--------|
-| **Core C.R.O.W.N.** | ✅ Completo | 95% |
-| **Pipeline de 6 etapas** | ✅ Completo | 100% |
-| **Memoria Jerárquica** | ✅ Completo | 90% |
-| **Sistema de Skills** | ✅ Completo | 85% |
-| **UI Terminal** | ✅ Completo | 90% |
-| **Intro Cinematográfico** | ✅ Completo | 100% |
-| **Seguridad/Auth** | ✅ Completo | 95% |
-| **API Keys** | ✅ Completo | 100% |
-| **i18n (es/en)** | ✅ Completo | 80% |
-| **Quantum Bridge** | 🔧 En progreso | 40% |
-| **Fabric Definitions** | ✅ Completo | 70% |
-| **Testing** | 🔧 En progreso | 30% |
-| **Documentación** | ✅ Completo | 90% |
-
-### Producción y Despliegue
-
-| Fase | Estado | Avance |
-|------|--------|--------|
-| **Desarrollo Core** | ✅ | 95% |
-| **Integración UI** | ✅ | 90% |
-| **Seguridad** | ✅ | 95% |
-| **Testing E2E** | 🔧 | 30% |
-| **Optimización** | 🔧 | 60% |
-| **Deploy** | ⏳ | 20% |
-| **Documentación** | ✅ | 90% |
-
-**Avance General para Producción: ~75%**
 
 ---
 
 ## Roadmap
 
-### v4.3.0 (Próximo)
-- [ ] Testing E2E completo
-- [ ] Optimización de performance
-- [ ] Quantum Bridge v2
-- [ ] Dashboard de monitoreo
+### v5.0.0 (Actual)
+- [x] Arquitectura de navegación oculta (4 navbars)
+- [x] NODO — Multi-provider adapter layer
+- [x] PRISMA — Skill registry con lifecycle
+- [x] MEMORIA — Session memory con FTS
+- [x] ESCUDO — Security perimeter enforcement
+- [x] TEMA — Skin engine enterprise
+- [x] TAMV kernel + 7-federation bus
+- [x] Server-side CROWN enforcement
+- [x] Rate limiting + content safety
+- [x] Paleta Navy/Petroleum/Platinum/Terracotta/Copper
 
-### v4.4.0
+### v5.1.0 (Próximo)
+- [ ] TAMV kernel integration con pipeline
+- [ ] ExperienceOrchestrator + FederationBus live
+- [ ] DB schemas + sovereign ledger
+- [ ] CRON scheduler module
+- [ ] CapabilityRegistry
+- [ ] PolicyEnforcementPoint
+- [ ] ModelRouter integration con NODO
+- [ ] OutputValidator
+
+### v5.2.0
+- [ ] Memory migration a Supabase
+- [ ] pgvector para búsqueda semántica
+- [ ] Testing E2E completo
+- [ ] Dashboard de monitoreo
+- [ ] Quantum Bridge v2
+
+### v5.3.0
 - [ ] Multi-idioma completo (pt, fr, de)
 - [ ] Plugins de terceros
 - [ ] Webhook system
 - [ ] Audit export
-
-### v5.0.0
 - [ ] Federación de nodos
+
+### v6.0.0
 - [ ] Blockchain para auditoría
 - [ ] Edge computing
 - [ ] Mobile app
+- [ ] TAMV Spec (160 operations)
 
 ---
 
@@ -588,7 +831,7 @@ Isabella se posiciona como una plataforma de **gobernanza cognitiva** que combin
 ### Autoría
 
 - **Nombre**: Edwin Oswaldo Castillo Trejo (Anubis Villaseñor)
-- **ORCID**: 0009-0008-5050-1539
+- **ORCID**: [0009-0008-5050-1539](https://orcid.org/0009-0008-5050-1539)
 - **Organización**: TAMV ONLINE NETWORK / RDM Digital Hub
 - **Ubicación**: Real del Monte, Hidalgo, México
 
