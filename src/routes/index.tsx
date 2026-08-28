@@ -1,7 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useCallback, useRef, useState } from "react";
-import { CinematicIntro } from "@/components/intro/CinematicIntro";
-import { type IntroPhase } from "@/components/intro/timeline";
+import { lazy, Suspense, useCallback, useRef, useState } from "react";
 import { CommandLine } from "@/components/isabella/CommandLine";
 import { MessageStream } from "@/components/isabella/MessageStream";
 import { TelemetryPanel } from "@/components/isabella/TelemetryPanel";
@@ -10,6 +8,12 @@ import { SkillsPanel } from "@/components/isabella/SkillsPanel";
 import { PipelineIndicator } from "@/components/isabella/PipelineIndicator";
 import { useIsabellaAgent } from "@/lib/useIsabellaAgent";
 import { LOCALES } from "@/i18n";
+
+const CinematicIntro = lazy(() =>
+  import("@/components/intro/CinematicIntro").then((m) => ({ default: m.CinematicIntro }))
+);
+
+type IntroPhase = "VOID" | "STELLAR_FIELD" | "COMET_PASSAGE" | "COGNITIVE_CORE" | "LOGO_REVEAL" | "HEARTBEAT" | "HUMMINGBIRD_ENTRY" | "HUMMINGBIRD_ASCENT" | "INTERFACE_REVEAL" | "ONLINE";
 
 const TITLE = "Isabella Villaseñor AI — Terminal Cognitivo C.R.O.W.N.";
 const DESC =
@@ -55,11 +59,13 @@ function Index() {
 
   if (!introComplete) {
     return (
-      <CinematicIntro
-        onComplete={handleIntroComplete}
-        onPhaseChange={handlePhaseChange}
-        skipOnReducedMotion
-      />
+      <Suspense fallback={<div className="fixed inset-0 z-50 bg-[#02040A]" />}>
+        <CinematicIntro
+          onComplete={handleIntroComplete}
+          onPhaseChange={handlePhaseChange}
+          skipOnReducedMotion
+        />
+      </Suspense>
     );
   }
 
