@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Waveform } from "./Waveform";
+import { t } from "@/i18n";
 
 export function CommandLine({
   onSend,
@@ -33,12 +34,12 @@ export function CommandLine({
     <div className="glass-strong rounded-3xl px-5 py-4 sm:px-7 sm:py-5">
       <div className="mb-2 flex items-center justify-between">
         <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
-          Canal de percepción · Nodo Cero
+          {t("input.channel")}
         </span>
         <span
           className={`font-mono text-[10px] tracking-[0.2em] ${isProcessing ? "text-electric" : "text-muted-foreground"}`}
         >
-          {isProcessing ? "SINTETIZANDO" : "EN ESCUCHA"}
+          {isProcessing ? t("status.synthesizing") : t("status.listening")}
         </span>
       </div>
 
@@ -55,7 +56,7 @@ export function CommandLine({
           }
         }}
         rows={1}
-        placeholder="Habla con Isabella… (Enter para enviar · Shift+Enter para nueva línea)"
+        placeholder={t("input.placeholder")}
         className="mt-2 w-full resize-none bg-transparent text-[15px] leading-relaxed text-foreground outline-none placeholder:text-muted-foreground/70"
       />
 
@@ -65,14 +66,14 @@ export function CommandLine({
             onClick={onReset}
             className="rounded-lg border border-border px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-platinum"
           >
-            Purgar memoria
+            {t("actions.purge")}
           </button>
           {isProcessing && (
             <button
               onClick={onStop}
               className="rounded-lg border border-destructive/60 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-destructive transition-colors hover:bg-destructive/10"
             >
-              Detener
+              {t("actions.stop")}
             </button>
           )}
         </div>
@@ -81,7 +82,7 @@ export function CommandLine({
           disabled={isProcessing || !value.trim()}
           className="glow-ring rounded-xl bg-primary px-6 py-2 font-mono text-[11px] uppercase tracking-[0.22em] text-primary-foreground transition-opacity disabled:opacity-35"
         >
-          Transmitir
+          {t("actions.send")}
         </button>
       </div>
     </div>

@@ -1,10 +1,11 @@
 import { PRESETS, type PresetId, type RoutingDecision } from "@/lib/crown-ui";
 import { ModuleRail } from "./ModuleRail";
+import { t } from "@/i18n";
 
 const POLICY_LABEL: Record<string, string> = {
-  allowed: "AUTORIZADO",
-  requires_approval: "RATIFICACIÓN HUMANA",
-  denied: "DENEGADO",
+  allowed: "policy.allowed",
+  requires_approval: "policy.requires_approval",
+  denied: "policy.denied",
 };
 
 const POLICY_COLOR: Record<string, string> = {
@@ -71,7 +72,7 @@ export function TelemetryPanel({
           className="mt-2.5 font-mono text-[12px] tracking-[0.16em]"
           style={{ color: POLICY_COLOR[policy] }}
         >
-          {POLICY_LABEL[policy]}
+          {t(POLICY_LABEL[policy])}
         </p>
         <p className="mt-1.5 text-[11px] leading-snug text-muted-foreground">
           {decision?.policyReason ?? "Sin ciclo evaluado en esta sesión."}
@@ -98,12 +99,18 @@ export function TelemetryPanel({
         </h2>
         <dl className="mt-3 grid grid-cols-2 gap-y-2.5">
           {[
-            ["Ciclos", String(turns)],
-            ["Fragmentos", String(tokens)],
-            ["Gobernanza", decision ? `${(decision.governanceScore * 100).toFixed(0)}%` : "—"],
-            ["Certeza", decision ? `${(decision.epistemicCertainty * 100).toFixed(0)}%` : "—"],
-            ["Latencia", decision ? `${decision.latencyMs} ms` : "—"],
-            ["Riesgo", decision ? decision.risk.toUpperCase() : "—"],
+            [t("metrics.cycles"), String(turns)],
+            [t("metrics.fragments"), String(tokens)],
+            [
+              t("metrics.governance"),
+              decision ? `${(decision.governanceScore * 100).toFixed(0)}%` : "—",
+            ],
+            [
+              t("metrics.certainty"),
+              decision ? `${(decision.epistemicCertainty * 100).toFixed(0)}%` : "—",
+            ],
+            [t("metrics.latency"), decision ? `${decision.latencyMs} ms` : "—"],
+            [t("metrics.risk"), decision ? decision.risk.toUpperCase() : "—"],
           ].map(([k, v]) => (
             <div key={k}>
               <dt className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-muted-foreground">

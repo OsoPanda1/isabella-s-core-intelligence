@@ -1,0 +1,82 @@
+{
+  "app": {
+    "title": "Isabella Villaseñor AI",
+    "subtitle": "C.R.O.W.N. Cognitive Terminal",
+    "node": "Node Zero · Real del Monte, Hidalgo"
+  },
+  "status": {
+    "listening": "LISTENING",
+    "synthesizing": "SYNTHESIZING",
+    "online": "ONLINE",
+    "offline": "OFFLINE",
+    "processing": "PROCESSING"
+  },
+  "actions": {
+    "send": "Transmit",
+    "stop": "Stop",
+    "purge": "Purge memory",
+    "retry": "Retry perception",
+    "download": "Download",
+    "reopen": "Reopen",
+    "close": "Close",
+    "telemetry": "Telemetry"
+  },
+  "modules": {
+    "crown": "C.R.O.W.N.",
+    "isa": "I.S.A.",
+    "sophia": "S.O.P.H.I.A.",
+    "orion": "O.R.I.O.N.",
+    "argus": "A.R.G.U.S."
+  },
+  "policy": {
+    "allowed": "AUTHORIZED",
+    "requires_approval": "HUMAN APPROVAL",
+    "denied": "DENIED"
+  },
+  "metrics": {
+    "cycles": "Cycles",
+    "fragments": "Fragments",
+    "governance": "Governance",
+    "certainty": "Certainty",
+    "latency": "Latency",
+    "risk": "Risk"
+  },
+  "input": {
+    "placeholder": "Talk to Isabella… (Enter to send · Shift+Enter for new line)",
+    "channel": "Perception channel · Node Zero"
+  },
+  "memory": {
+    "title": "Active Memory",
+    "empty": "No records in active memory",
+    "scope": "Scope",
+    "sensitivity": "Sensitivity",
+    "purpose": "Purpose",
+    "expires": "Expires",
+    "never": "Never"
+  },
+  "skills": {
+    "title": "Skills",
+    "empty": "No skills registered",
+    "active": "Active",
+    "disabled": "Disabled",
+    "execute": "Execute",
+    "category": "Category",
+    "risk": "Risk",
+    "version": "Version"
+  },
+  "agent": {
+    "pipeline": {
+      "perceive": "Perception",
+      "remember": "Memory",
+      "policy": "Policy",
+      "decide": "Decision",
+      "act": "Action",
+      "audit": "Audit"
+    }
+  },
+  "conversation": {
+    "operator": "OPERATOR",
+    "newSession": "Session purged. Immediate memory restarted · traceability preserved.",
+    "boot": "C.R.O.W.N. core synchronized · ISA · SOPHIA · ORION · ARGUS online · Node Zero, Real del Monte, Hidalgo. Presence established."
+  }
+}

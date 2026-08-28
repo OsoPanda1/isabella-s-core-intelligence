@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { MODULES } from "@/lib/crown-ui";
 import { speakIsabella, stopVoice } from "@/lib/voice";
-import type { TerminalMessage } from "@/lib/useIsabella";
+import type { TerminalMessage } from "@/lib/useIsabellaAgent";
+import { t } from "@/i18n";
 
 function VoiceButton({ text }: { text: string }) {
   const [state, setState] = useState<"idle" | "playing" | "error">("idle");
@@ -85,7 +86,7 @@ export function MessageStream({
             <div key={m.id} className="animate-rise flex justify-end">
               <div className="glass max-w-[86%] rounded-2xl rounded-br-sm px-5 py-4 sm:max-w-[70%]">
                 <div className="mb-1.5 flex items-center justify-between gap-6">
-                  <Meta label="OPERADOR" value="ANUBIS" />
+                  <Meta label={t("conversation.operator")} value="ANUBIS" />
                   <span className="font-mono text-[10px] text-muted-foreground">{m.timestamp}</span>
                 </div>
                 <p className="whitespace-pre-wrap text-[15px] leading-relaxed text-foreground">
@@ -150,7 +151,7 @@ export function MessageStream({
                   onClick={onRetry}
                   className="mt-4 rounded-lg border border-border px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-platinum transition-colors hover:bg-secondary/60"
                 >
-                  Reintentar percepción
+                  {t("actions.retry")}
                 </button>
               )}
             </div>

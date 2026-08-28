@@ -3,11 +3,15 @@ import { useRef, useState } from "react";
 import { CommandLine } from "@/components/isabella/CommandLine";
 import { MessageStream } from "@/components/isabella/MessageStream";
 import { TelemetryPanel } from "@/components/isabella/TelemetryPanel";
-import { useIsabella } from "@/lib/useIsabella";
+import { MemoryPanel } from "@/components/isabella/MemoryPanel";
+import { SkillsPanel } from "@/components/isabella/SkillsPanel";
+import { PipelineIndicator } from "@/components/isabella/PipelineIndicator";
+import { useIsabellaAgent } from "@/lib/useIsabellaAgent";
+import { LOCALES } from "@/i18n";
 
 const TITLE = "Isabella Villaseñor AI — Terminal Cognitivo C.R.O.W.N.";
 const DESC =
-  "Terminal cognitivo de Isabella Villaseñor AI: orquestación C.R.O.W.N. con ISA, SOPHIA, ORION y ARGUS, Policy Gate en vivo y telemetría desde Nodo Cero, Real del Monte, Hidalgo.";
+  "Terminal cognitivo de Isabella Villaseñor AI: orquestación C.R.O.W.N. con ISA, SOPHIA, ORION y ARGUS, Policy Gate en vivo, memoria jerárquica, skills y telemetría desde Nodo Cero, Real del Monte, Hidalgo.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,8 +28,9 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const isabella = useIsabella();
+  const isabella = useIsabellaAgent();
   const [panel, setPanel] = useState(false);
+  const [activeTab, setActiveTab] = useState<"telemetry" | "memory" | "skills">("telemetry");
   const lastInput = useRef("");
   const fileRef = useRef<HTMLInputElement | null>(null);
 
@@ -52,6 +57,24 @@ function Index() {
             <span className="hidden font-mono text-[10px] tracking-[0.2em] text-muted-foreground sm:inline">
               {isabella.preset.name.toUpperCase()}
             </span>
+
+            {/* Language Switcher */}
+            <div className="hidden items-center gap-1 sm:flex">
+              {LOCALES.map((loc) => (
+                <button
+                  key={loc.id}
+                  onClick={() => isabella.changeLocale(loc.id)}
+                  className={`rounded-md px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.12em] transition-colors ${
+                    isabella.locale === loc.id
+                      ? "bg-primary/20 text-platinum"
+                      : "text-muted-foreground hover:text-platinum"
+                  }`}
+                >
+                  {loc.flag}
+                </button>
+              ))}
+            </div>
+
             <input
               ref={fileRef}
               type="file"
@@ -82,13 +105,13 @@ function Index() {
               onClick={() => setPanel((p) => !p)}
               className="rounded-lg border border-border px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground lg:hidden"
             >
-              {panel ? "Cerrar" : "Telemetría"}
+              {panel ? "Cerrar" : "Panel"}
             </button>
           </div>
         </div>
       </header>
 
-      <main className="mx-auto grid max-w-[1500px] gap-5 px-4 py-6 sm:px-8 lg:grid-cols-[minmax(0,1fr)_330px]">
+      <main className="mx-auto grid max-w-[1500px] gap-5 px-4 py-6 sm:px-8 lg:grid-cols-[minmax(0,1fr)_380px]">
         <section className="flex min-w-0 flex-col gap-5">
           <div className="glass min-h-[52vh] flex-1 overflow-y-auto rounded-3xl">
             <MessageStream
@@ -105,14 +128,41 @@ function Index() {
         </section>
 
         <div className={panel ? "block" : "hidden lg:block"}>
-          <TelemetryPanel
-            presetId={isabella.presetId}
-            setPresetId={isabella.setPresetId}
-            decision={isabella.decision}
-            tokens={isabella.tokens}
-            turns={turns}
-            isProcessing={isabella.isProcessing}
-          />
+          {/* Pipeline Indicator */}
+          <div className="mb-4">
+            <PipelineIndicator />
+          </div>
+
+          {/* Tab Navigation */}
+          <div className="mb-3 flex gap-1 rounded-xl border border-border/50 p-1">
+            {(["telemetry", "memory", "skills"] as const).map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`flex-1 rounded-lg px-2 py-1.5 font-mono text-[9px] uppercase tracking-[0.14em] transition-colors ${
+                  activeTab === tab
+                    ? "bg-primary/20 text-platinum"
+                    : "text-muted-foreground hover:text-platinum"
+                }`}
+              >
+                {tab === "telemetry" ? "Telemetría" : tab === "memory" ? "Memoria" : "Skills"}
+              </button>
+            ))}
+          </div>
+
+          {/* Tab Content */}
+          {activeTab === "telemetry" && (
+            <TelemetryPanel
+              presetId={isabella.presetId}
+              setPresetId={isabella.setPresetId}
+              decision={isabella.decision}
+              tokens={isabella.tokens}
+              turns={turns}
+              isProcessing={isabella.isProcessing}
+            />
+          )}
+          {activeTab === "memory" && <MemoryPanel />}
+          {activeTab === "skills" && <SkillsPanel />}
         </div>
       </main>
     </div>

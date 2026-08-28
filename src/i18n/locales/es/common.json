@@ -1,0 +1,82 @@
+{
+  "app": {
+    "title": "Isabella Villaseñor AI",
+    "subtitle": "Terminal Cognitivo C.R.O.W.N.",
+    "node": "Nodo Cero · Real del Monte, Hidalgo"
+  },
+  "status": {
+    "listening": "EN ESCUCHA",
+    "synthesizing": "SINTETIZANDO",
+    "online": "EN LÍNEA",
+    "offline": "OFFLINE",
+    "processing": "PROCESANDO"
+  },
+  "actions": {
+    "send": "Transmitir",
+    "stop": "Detener",
+    "purge": "Purgar memoria",
+    "retry": "Reintentar percepción",
+    "download": "Descargar",
+    "reopen": "Reabrir",
+    "close": "Cerrar",
+    "telemetry": "Telemetría"
+  },
+  "modules": {
+    "crown": "C.R.O.W.N.",
+    "isa": "I.S.A.",
+    "sophia": "S.O.P.H.I.A.",
+    "orion": "O.R.I.O.N.",
+    "argus": "A.R.G.U.S."
+  },
+  "policy": {
+    "allowed": "AUTORIZADO",
+    "requires_approval": "RATIFICACIÓN HUMANA",
+    "denied": "DENEGADO"
+  },
+  "metrics": {
+    "cycles": "Ciclos",
+    "fragments": "Fragmentos",
+    "governance": "Gobernanza",
+    "certainty": "Certeza",
+    "latency": "Latencia",
+    "risk": "Riesgo"
+  },
+  "input": {
+    "placeholder": "Habla con Isabella… (Enter para enviar · Shift+Enter para nueva línea)",
+    "channel": "Canal de percepción · Nodo Cero"
+  },
+  "memory": {
+    "title": "Memoria Activa",
+    "empty": "Sin registros en memoria activa",
+    "scope": "Alcance",
+    "sensitivity": "Sensibilidad",
+    "purpose": "Propósito",
+    "expires": "Expira",
+    "never": "Nunca"
+  },
+  "skills": {
+    "title": "Habilidades",
+    "empty": "Sin habilidades registradas",
+    "active": "Activa",
+    "disabled": "Deshabilitada",
+    "execute": "Ejecutar",
+    "category": "Categoría",
+    "risk": "Riesgo",
+    "version": "Versión"
+  },
+  "agent": {
+    "pipeline": {
+      "perceive": "Percepción",
+      "remember": "Memoria",
+      "policy": "Política",
+      "decide": "Decisión",
+      "act": "Acción",
+      "audit": "Auditoría"
+    }
+  },
+  "conversation": {
+    "operator": "OPERADOR",
+    "newSession": "Sesión purgada. Memoria inmediata reiniciada · trazabilidad preservada.",
+    "boot": "Núcleo C.R.O.W.N. sincronizado · ISA · SOPHIA · ORION · ARGUS en línea · Nodo Cero, Real del Monte, Hidalgo. Presencia establecida."
+  }
+}
