@@ -17,6 +17,7 @@ import {
   responseModeFor,
   buildAuditEvents,
   buildSystemPrompt,
+  DEFAULT_IDENTITY,
   type RequestContext,
   type RoutingDecision,
   type CrownAuditEvent,
@@ -145,7 +146,7 @@ export class IsabellaPipeline {
     // Stage 3: Policy Gate
     this.setStage("policy");
     const { result: policyResult, ms: policyMs } = trackStage("policy", () => {
-      const intent = assessIntent(perceiveResult);
+      const intent = assessIntent(perceiveResult.input);
       const policy = evaluatePolicy(perceiveResult, intent);
       return { intent, policy };
     });
@@ -155,17 +156,18 @@ export class IsabellaPipeline {
     this.setStage("decide");
     const { result: routing, ms: decideMs } = trackStage("decide", () => {
       const route = selectModules(policyResult.intent);
+      const normalizedIdentity = options?.identity
+        ? {
+            authenticated: options.identity.authenticated,
+            actorId: options.identity.actorId,
+            roles: options.identity.roles ?? [],
+            permissions: options.identity.permissions ?? [],
+            dataScopes: ["turn" as const, "session" as const, "project" as const],
+          }
+        : DEFAULT_IDENTITY;
       const memoryScopes = resolveAllowedMemoryScopes(
         policyResult.intent,
-        options?.identity
-          ? {
-              authenticated: options.identity.authenticated,
-              actorId: options.identity.actorId,
-              roles: options.identity.roles ?? [],
-              permissions: options.identity.permissions ?? [],
-              dataScopes: ["turn", "session", "project"],
-            }
-          : undefined,
+        normalizedIdentity,
       );
       const allowedTools = resolveAllowedTools(policyResult.policy, policyResult.intent);
       const responseMode = responseModeFor(policyResult.policy);
@@ -177,20 +179,7 @@ export class IsabellaPipeline {
         primary: route.primary,
         supporting: route.supporting,
         policy: policyResult.policy,
-        identity: options?.identity
-          ? {
-              authenticated: options.identity.authenticated,
-              actorId: options.identity.actorId,
-              roles: options.identity.roles ?? [],
-              permissions: options.identity.permissions ?? [],
-              dataScopes: memoryScopes as MemoryScope[],
-            }
-          : {
-              authenticated: false,
-              roles: [],
-              permissions: [],
-              dataScopes: ["turn"],
-            },
+        identity: normalizedIdentity,
         intent: policyResult.intent,
         evidence: {
           level: "none",
