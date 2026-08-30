@@ -13,7 +13,7 @@ import {
   type Preset,
   type PresetId,
   type RoutingDecision,
-} from "../crown-ui";
+} from "./crown-ui";
 import { memory, type MemoryRecord } from "./agent/memory";
 import { skillRegistry, type SkillWithStatus } from "./agent/skills";
 import { pipeline, type PipelineStage } from "./agent/pipeline";
