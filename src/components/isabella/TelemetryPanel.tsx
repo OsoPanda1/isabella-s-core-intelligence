@@ -72,7 +72,7 @@ export function TelemetryPanel({
           className="mt-2.5 font-mono text-[12px] tracking-[0.16em]"
           style={{ color: POLICY_COLOR[policy] }}
         >
-          {t(POLICY_LABEL[policy])}
+          {t(POLICY_LABEL[policy] ?? "policy.allowed")}
         </p>
         <p className="mt-1.5 text-[11px] leading-snug text-muted-foreground">
           {decision?.policyReason ?? "Sin ciclo evaluado en esta sesión."}

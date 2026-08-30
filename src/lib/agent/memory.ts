@@ -23,7 +23,7 @@ export interface MemoryRecord {
   tags: string[];
   confidence: number;
   createdAt: string;
-  expiresAt?: string;
+  expiresAt?: string | undefined;
   accessCount: number;
   lastAccessedAt: string;
 }
@@ -40,8 +40,8 @@ export interface MemoryStats {
   total: number;
   byScope: Record<MemoryScope, number>;
   bySensitivity: Record<SensitivityLevel, number>;
-  oldestRecord?: string;
-  newestRecord?: string;
+  oldestRecord?: string | undefined;
+  newestRecord?: string | undefined;
 }
 
 const STORAGE_KEY = "isabella.memory.v1";

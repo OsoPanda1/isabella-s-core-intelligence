@@ -227,15 +227,18 @@ export class ResearchEngine {
 
     for (let i = 0; i < claims.length; i++) {
       for (let j = i + 1; j < claims.length; j++) {
+        const claimA = claims[i];
+        const claimB = claims[j];
+        if (!claimA || !claimB) continue;
         // Simple contradiction detection (would use NLP in production)
-        if (claims[i].source !== claims[j].source) {
-          const similarity = this.textSimilarity(claims[i].text, claims[j].text);
-          if (similarity > 0.7 && Math.abs(claims[i].confidence - claims[j].confidence) > 0.3) {
+        if (claimA.source !== claimB.source) {
+          const similarity = this.textSimilarity(claimA.text, claimB.text);
+          if (similarity > 0.7 && Math.abs(claimA.confidence - claimB.confidence) > 0.3) {
             contradictions.push({
-              claimA: claims[i],
-              claimB: claims[j],
+              claimA,
+              claimB,
               severity: similarity > 0.9 ? "high" : "medium",
-              description: `Conflicting claims from ${claims[i].source} and ${claims[j].source}`,
+              description: `Conflicting claims from ${claimA.source} and ${claimB.source}`,
             });
           }
         }

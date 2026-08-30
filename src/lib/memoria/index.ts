@@ -45,8 +45,8 @@ export interface MemoryStats {
   totalEntries: number;
   byScope: Record<MemoryScope, number>;
   totalTokens: number;
-  oldestEntry?: string;
-  newestEntry?: string;
+  oldestEntry?: string | undefined;
+  newestEntry?: string | undefined;
 }
 
 // ============================================================================

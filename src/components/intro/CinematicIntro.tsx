@@ -84,9 +84,9 @@ export function CinematicIntro({
     // Scene
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(COLORS_THREE.voidBlack);
-    scene.fog = limits.fog
-      ? new THREE.FogExp2(COLORS_THREE.deepSpace, 0.012)
-      : undefined;
+    if (limits.fog) {
+      scene.fog = new THREE.FogExp2(COLORS_THREE.deepSpace, 0.012);
+    }
     sceneRef.current = scene;
 
     // Camera
@@ -141,8 +141,8 @@ export function CinematicIntro({
     scene.add(coreRings.group);
     scene.add(logo);
     scene.add(heart);
-    scene.add(hummingbird.group);
-    scene.add(interfaceElements.group);
+    scene.add(hummingbird);
+    scene.add(interfaceElements);
 
     // Mouse tracking
     const mouse = { x: 0, y: 0 };
@@ -602,6 +602,7 @@ function createInterfaceElements() {
   ];
 
   for (const [start, end] of hudPoints) {
+    if (!start || !end) continue;
     const geometry = new THREE.BufferGeometry().setFromPoints([start, end]);
     const line = new THREE.Line(geometry, lineMaterial.clone());
     group.add(line);
@@ -653,11 +654,12 @@ function updateStarfield2D(
   }
 
   // Twinkle
-  const positions = stars.geometry.attributes.position;
+  const positions = stars.geometry.attributes["position"];
   if (positions) {
     const arr = positions.array as Float32Array;
     for (let i = 0; i < arr.length; i += 3) {
-      arr[i + 1] += Math.sin(time * 0.5 + i) * 0.001;
+      const v = arr[i + 1];
+      if (v !== undefined) arr[i + 1] = v + Math.sin(time * 0.5 + i) * 0.001;
     }
     positions.needsUpdate = true;
   }
@@ -715,7 +717,7 @@ function updateComets(
     comet.coreMaterial.opacity = Math.min(1, t * 3) * (1 - Math.max(0, (t - 0.7) / 0.3));
 
     // Trail
-    const trailPositions = comet.trailGeometry.attributes.position;
+    const trailPositions = comet.trailGeometry.attributes["position"];
     if (trailPositions) {
       const arr = trailPositions.array as Float32Array;
       for (let i = 0; i < comet.trailSizes.length; i++) {
@@ -887,15 +889,15 @@ function updateInterface(
   phase: IntroPhase,
 ) {
   if (phase !== "INTERFACE_REVEAL") {
-    iface.group.visible = false;
+    iface.visible = false;
     return;
   }
 
-  iface.group.visible = true;
+  iface.visible = true;
   const interfaceProgress = Math.min(1, (time - 47) / 3);
 
   let dotIndex = 0;
-  iface.group.traverse((obj) => {
+  iface.traverse((obj: THREE.Object3D) => {
     if (obj instanceof THREE.Line) {
       const mat = obj.material as THREE.LineBasicMaterial;
       mat.opacity = interfaceProgress * 0.5;

@@ -168,19 +168,19 @@ class LovableGatewayTransport extends ProviderTransport {
 
   normalizeResponse(raw: unknown, provider: ProviderId): ProviderResponse {
     const data = raw as Record<string, unknown>;
-    const choices = (data.choices ?? []) as Array<Record<string, unknown>>;
+    const choices = (data["choices"] ?? []) as Array<Record<string, unknown>>;
     const choice = choices[0] ?? {};
-    const message = (choice.message ?? {}) as Record<string, unknown>;
-    const usage = (data.usage ?? {}) as Record<string, number>;
+    const message = (choice["message"] ?? {}) as Record<string, unknown>;
+    const usage = (data["usage"] ?? {}) as Record<string, number>;
 
     return {
-      content: (message.content as string) ?? "",
-      finishReason: (choice.finish_reason as string) ?? "stop",
-      model: (data.model as string) ?? "unknown",
+      content: (message["content"] as string) ?? "",
+      finishReason: (choice["finish_reason"] as string) ?? "stop",
+      model: (data["model"] as string) ?? "unknown",
       usage: {
-        promptTokens: (usage.prompt_tokens as number) ?? 0,
-        completionTokens: (usage.completion_tokens as number) ?? 0,
-        totalTokens: (usage.total_tokens as number) ?? 0,
+        promptTokens: (usage["prompt_tokens"] as number) ?? 0,
+        completionTokens: (usage["completion_tokens"] as number) ?? 0,
+        totalTokens: (usage["total_tokens"] as number) ?? 0,
       },
       latencyMs: 0,
       provider,
@@ -225,19 +225,19 @@ class OpenAITransport extends ProviderTransport {
 
   normalizeResponse(raw: unknown, provider: ProviderId): ProviderResponse {
     const data = raw as Record<string, unknown>;
-    const choices = (data.choices ?? []) as Array<Record<string, unknown>>;
+    const choices = (data["choices"] ?? []) as Array<Record<string, unknown>>;
     const choice = choices[0] ?? {};
-    const message = (choice.message ?? {}) as Record<string, unknown>;
-    const usage = (data.usage ?? {}) as Record<string, number>;
+    const message = (choice["message"] ?? {}) as Record<string, unknown>;
+    const usage = (data["usage"] ?? {}) as Record<string, number>;
 
     return {
-      content: (message.content as string) ?? "",
-      finishReason: (choice.finish_reason as string) ?? "stop",
-      model: (data.model as string) ?? "unknown",
+      content: (message["content"] as string) ?? "",
+      finishReason: (choice["finish_reason"] as string) ?? "stop",
+      model: (data["model"] as string) ?? "unknown",
       usage: {
-        promptTokens: (usage.prompt_tokens as number) ?? 0,
-        completionTokens: (usage.completion_tokens as number) ?? 0,
-        totalTokens: (usage.total_tokens as number) ?? 0,
+        promptTokens: (usage["prompt_tokens"] as number) ?? 0,
+        completionTokens: (usage["completion_tokens"] as number) ?? 0,
+        totalTokens: (usage["total_tokens"] as number) ?? 0,
       },
       latencyMs: 0,
       provider,
@@ -288,26 +288,26 @@ class AnthropicTransport extends ProviderTransport {
 
   normalizeResponse(raw: unknown, provider: ProviderId): ProviderResponse {
     const data = raw as Record<string, unknown>;
-    const content = (data.content ?? []) as Array<Record<string, unknown>>;
+    const content = (data["content"] ?? []) as Array<Record<string, unknown>>;
     const textBlock = content.find(
-      (b: Record<string, unknown>) => b.type === "text",
+      (b: Record<string, unknown>) => b["type"] === "text",
     );
 
     return {
-      content: (textBlock?.text as string) ?? "",
-      finishReason: (data.stop_reason as string) ?? "end_turn",
-      model: (data.model as string) ?? "unknown",
+      content: (textBlock?.["text"] as string) ?? "",
+      finishReason: (data["stop_reason"] as string) ?? "end_turn",
+      model: (data["model"] as string) ?? "unknown",
       usage: {
         promptTokens:
-          ((data.usage as Record<string, number>)?.input_tokens as number) ??
+          ((data["usage"] as Record<string, number>)?.["input_tokens"] as number) ??
           0,
         completionTokens:
-          ((data.usage as Record<string, number>)?.output_tokens as number) ??
+          ((data["usage"] as Record<string, number>)?.["output_tokens"] as number) ??
           0,
         totalTokens:
-          (((data.usage as Record<string, number>)?.input_tokens as number) ??
+          (((data["usage"] as Record<string, number>)?.["input_tokens"] as number) ??
             0) +
-          (((data.usage as Record<string, number>)?.output_tokens as number) ??
+          (((data["usage"] as Record<string, number>)?.["output_tokens"] as number) ??
             0),
       },
       latencyMs: 0,

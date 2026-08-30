@@ -49,7 +49,7 @@ export interface CivicEvent<T = unknown> {
   payload: T;
   occurredAt: string;
   source: "WEB_PORTAL" | "EDGE_NODE" | "MOBILE_APP" | "BACKOFFICE";
-  correlationId?: string;
+  correlationId?: string | undefined;
 }
 
 export interface DomainService {
@@ -64,8 +64,8 @@ export interface StoredEvent extends CivicEvent {
   eventHash: string;
   recordedAt: string;
   metadata: {
-    actorId?: string;
-    causationId?: string;
+    actorId?: string | undefined;
+    causationId?: string | undefined;
   };
 }
 
@@ -79,7 +79,7 @@ class EventStore {
 
   async append(
     event: CivicEvent,
-    options: { streamId: string; actorId?: string; causationId?: string },
+    options: { streamId: string; actorId?: string | undefined; causationId?: string | undefined },
   ): Promise<StoredEvent> {
     const version = (this.streamVersions.get(options.streamId) ?? 0) + 1;
     this.streamVersions.set(options.streamId, version);

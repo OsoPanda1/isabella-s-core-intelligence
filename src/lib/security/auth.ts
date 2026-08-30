@@ -23,12 +23,12 @@ import { validateAPIKey, type APIKeyScope, apiKeyStore } from "./api-keys";
 export interface AuthContext {
   authenticated: boolean;
   method: "api-key" | "session" | "hmac" | "internal";
-  subjectId?: string;
-  scopes?: APIKeyScope[];
-  keyId?: string;
-  sessionId?: string;
-  error?: string;
-  metadata?: Record<string, unknown>;
+  subjectId?: string | undefined;
+  scopes?: APIKeyScope[] | undefined;
+  keyId?: string | undefined;
+  sessionId?: string | undefined;
+  error?: string | undefined;
+  metadata?: Record<string, unknown> | undefined;
 }
 
 export interface AuthMiddlewareOptions {
@@ -108,9 +108,9 @@ export function authenticateSession(
   return {
     authenticated: true,
     method: "session",
-    sessionId: result.payload.jti as string,
-    subjectId: result.payload.sub as string,
-    scopes: result.payload.scopes as APIKeyScope[],
+    sessionId: result.payload["jti"] as string,
+    subjectId: result.payload["sub"] as string,
+    scopes: result.payload["scopes"] as APIKeyScope[],
     metadata: result.payload,
   };
 }
@@ -260,7 +260,7 @@ export function authMiddleware(
   if (allowInternal) {
     const internalKey = request.headers["x-internal-key"];
     if (internalKey) {
-      const expectedKey = process.env.ISABELLA_INTERNAL_KEY;
+      const expectedKey = process.env["ISABELLA_INTERNAL_KEY"];
       if (expectedKey) {
         return authenticateInternal(internalKey, expectedKey);
       }

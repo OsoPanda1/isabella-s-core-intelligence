@@ -19,15 +19,7 @@ const bundles: Record<Locale, TranslationBundle> = {
   en: { common: enCommon },
 };
 
-type DotPrefix<T extends string> = T extends "" ? "" : `.${T}`;
-
-type DotNestedKeys<T> = T extends object
-  ? {
-      [K in Exclude<keyof T, symbol>]: `${K}${DotPrefix<DotNestedKeys<T[K]>>}`;
-    }[Exclude<keyof T, symbol>]
-  : "";
-
-export type TranslationKey = DotNestedKeys<TranslationBundle>;
+export type TranslationKey = string;
 
 let currentLocale: Locale = DEFAULT_LOCALE;
 

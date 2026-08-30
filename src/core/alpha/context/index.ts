@@ -63,10 +63,10 @@ export interface ObjectiveContext {
 }
 
 export interface ConstraintContext {
-  maxLatencyMs?: number;
-  maxCostUsd?: number;
-  maxSteps?: number;
-  maxEnergyJoules?: number;
+  maxLatencyMs?: number | undefined;
+  maxCostUsd?: number | undefined;
+  maxSteps?: number | undefined;
+  maxEnergyJoules?: number | undefined;
   requiredCapabilities: string[];
   forbiddenCapabilities: string[];
 }

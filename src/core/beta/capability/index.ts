@@ -74,6 +74,7 @@ export class CapabilityRegistry {
     });
 
     const selected = sorted[0];
+    if (!selected) return null;
 
     return {
       capabilityId: selected.capabilityId,
