@@ -137,6 +137,8 @@ export class ContextBuilder {
         ...partial.objective,
       },
       constraints: {
+        requiredCapabilities: [],
+        forbiddenCapabilities: [],
         ...this.defaults.constraints,
         ...partial.constraints,
       },
