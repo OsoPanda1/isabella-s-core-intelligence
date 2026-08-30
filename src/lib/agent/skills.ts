@@ -53,10 +53,10 @@ export interface SkillExecutionResult {
 
 export interface SkillWithStatus extends SkillDefinition {
   status: SkillStatus;
-  lastExecutedAt?: string;
+  lastExecutedAt?: string | undefined;
   executionCount: number;
   averageLatencyMs: number;
-  lastError?: string;
+  lastError?: string | undefined;
 }
 
 const STORAGE_KEY = "isabella.skills.v1";

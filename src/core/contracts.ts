@@ -351,3 +351,16 @@ export function createRequestId(): string {
 export function createTraceId(): string {
   return randomUUID().replace(/-/g, "").slice(0, 32);
 }
+
+// ============================================================================
+// MEMORY
+// ============================================================================
+
+export type MemoryScope =
+  | "immediate"
+  | "session"
+  | "project"
+  | "territorial"
+  | "historical";
+
+export type SensitivityLevel = "public" | "internal" | "confidential" | "secret";

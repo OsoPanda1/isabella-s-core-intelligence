@@ -13,12 +13,12 @@ export type AssuranceLevel = "none" | "basic" | "verified" | "high" | "critical"
 export interface IdentityContext {
   actorId: string;
   tenantId: string;
-  sessionId?: string;
+  sessionId?: string | undefined;
   roles: string[];
   scopes: string[];
   assuranceLevel: AssuranceLevel;
   authenticatedAt: string;
-  expiresAt?: string;
+  expiresAt?: string | undefined;
   metadata: Record<string, unknown>;
 }
 
@@ -28,7 +28,7 @@ export interface IdentityVerification {
   assuranceLevel: AssuranceLevel;
   scopesGranted: string[];
   deniedScopes: string[];
-  reason?: string;
+  reason?: string | undefined;
 }
 
 // ============================================================================

@@ -29,9 +29,9 @@ export interface CircuitBreakerStats {
   state: CircuitState;
   failures: number;
   successes: number;
-  lastFailureAt?: string;
-  lastSuccessAt?: string;
-  openSince?: string;
+  lastFailureAt?: string | undefined;
+  lastSuccessAt?: string | undefined;
+  openSince?: string | undefined;
   halfOpenAttempts: number;
 }
 
@@ -44,9 +44,9 @@ export class CircuitBreaker {
   private failures = 0;
   private successes = 0;
   private halfOpenAttempts = 0;
-  private lastFailureAt?: string;
-  private lastSuccessAt?: string;
-  private openSince?: string;
+  private lastFailureAt: string | undefined;
+  private lastSuccessAt: string | undefined;
+  private openSince: string | undefined;
 
   constructor(
     private readonly name: string,

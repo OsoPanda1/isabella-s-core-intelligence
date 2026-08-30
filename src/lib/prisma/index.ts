@@ -48,7 +48,7 @@ export interface SkillDefinition {
 export interface SkillWithState extends SkillDefinition {
   state: SkillState;
   useCount: number;
-  lastUsedAt?: string;
+  lastUsedAt?: string | undefined;
   createdAt: string;
   updatedAt: string;
 }

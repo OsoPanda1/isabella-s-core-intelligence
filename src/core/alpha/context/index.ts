@@ -63,10 +63,10 @@ export interface ObjectiveContext {
 }
 
 export interface ConstraintContext {
-  maxLatencyMs?: number;
-  maxCostUsd?: number;
-  maxSteps?: number;
-  maxEnergyJoules?: number;
+  maxLatencyMs?: number | undefined;
+  maxCostUsd?: number | undefined;
+  maxSteps?: number | undefined;
+  maxEnergyJoules?: number | undefined;
   requiredCapabilities: string[];
   forbiddenCapabilities: string[];
 }
@@ -137,6 +137,8 @@ export class ContextBuilder {
         ...partial.objective,
       },
       constraints: {
+        requiredCapabilities: [],
+        forbiddenCapabilities: [],
         ...this.defaults.constraints,
         ...partial.constraints,
       },

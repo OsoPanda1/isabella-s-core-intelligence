@@ -13,7 +13,7 @@ import {
   type Preset,
   type PresetId,
   type RoutingDecision,
-} from "../crown-ui";
+} from "./crown-ui";
 import { memory, type MemoryRecord } from "./agent/memory";
 import { skillRegistry, type SkillWithStatus } from "./agent/skills";
 import { pipeline, type PipelineStage } from "./agent/pipeline";
@@ -235,7 +235,7 @@ export function useIsabellaAgent() {
             content: acc.slice(0, 500),
             source: "system",
             purpose: "Respuesta de Isabella",
-            tags: [routing.intent.category, routing.primary],
+            tags: [routing.primary],
             confidence: routing.epistemicCertainty,
           });
         }

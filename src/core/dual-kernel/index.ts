@@ -53,7 +53,7 @@ export class DualKernel {
       const identity = identityResolver.resolve({
         actorId: request.actorId,
         tenantId: request.tenantId,
-        sessionId: request.sessionId,
+        ...(request.sessionId !== undefined ? { sessionId: request.sessionId } : {}),
       });
 
       // ─── BETA: Classification ──────────────────────────────
@@ -77,15 +77,15 @@ export class DualKernel {
           memoryEnabled: request.context?.memoryEnabled ?? true,
         },
         project: {
-          projectId: request.context?.projectId,
+          ...(request.context?.projectId !== undefined ? { projectId: request.context.projectId } : {}),
         },
         territory: {
           territoryName: request.context?.territory ?? "Mineral del Monte",
         },
         constraints: {
-          maxLatencyMs: request.constraints?.maxLatencyMs,
-          maxCostUsd: request.constraints?.maxCostUsd,
-          maxSteps: request.constraints?.maxSteps,
+          ...(request.constraints?.maxLatencyMs !== undefined ? { maxLatencyMs: request.constraints.maxLatencyMs } : {}),
+          ...(request.constraints?.maxCostUsd !== undefined ? { maxCostUsd: request.constraints.maxCostUsd } : {}),
+          ...(request.constraints?.maxSteps !== undefined ? { maxSteps: request.constraints.maxSteps } : {}),
           requiredCapabilities: request.requestedCapabilities ?? [],
           forbiddenCapabilities: [],
         },
@@ -148,7 +148,7 @@ export class DualKernel {
         alternatives: hypotheses[0]?.alternatives ?? [],
         risks: hypotheses[0]?.risks ?? [],
         experiments: hypotheses[0]?.experiments ?? [],
-        constraints: request.constraints,
+        ...(request.constraints !== undefined ? { constraints: request.constraints } : {}),
       });
 
       // ─── BETA: Risk Assessment ─────────────────────────────
@@ -184,7 +184,7 @@ export class DualKernel {
           intent: request.intent,
           requestedCapabilities: request.requestedCapabilities ?? [],
           allowedScopes: identity.scopes,
-          constraints: request.constraints,
+          ...(request.constraints !== undefined ? { constraints: request.constraints } : {}),
         });
 
         if (capability) {

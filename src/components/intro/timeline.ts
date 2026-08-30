@@ -106,9 +106,10 @@ export const CAMERA_SHOTS: CameraShot[] = [
 
 export function resolveCameraShot(time: number): CameraShot {
   for (let i = CAMERA_SHOTS.length - 1; i >= 0; i--) {
-    if (time >= CAMERA_SHOTS[i].start) return CAMERA_SHOTS[i];
+    const shot = CAMERA_SHOTS[i];
+    if (shot && time >= shot.start) return shot;
   }
-  return CAMERA_SHOTS[0];
+  return CAMERA_SHOTS[0] as CameraShot;
 }
 
 export interface IntroState {
@@ -125,23 +126,25 @@ export function createInitialState(isReducedMotion: boolean): IntroState {
     phase: "VOID",
     progress: 0,
     elapsed: 0,
-    cameraShot: CAMERA_SHOTS[0],
+    cameraShot: CAMERA_SHOTS[0] as CameraShot,
     isReducedMotion,
     performanceProfile: detectPerformanceProfile(),
   };
 }
 
-function detectPerformanceProfile(): "high" | "medium" | "low" {
+export function detectPerformanceProfile(): "high" | "medium" | "low" {
   if (typeof navigator === "undefined") return "medium";
 
-  const connection = (navigator as Record<string, unknown>).connection as
+  const connection = (navigator as unknown as Record<string, unknown>)["connection"] as
     | { effectiveType?: string; saveData?: boolean }
     | undefined;
 
   if (connection?.saveData) return "low";
   if (connection?.effectiveType === "2g" || connection?.effectiveType === "slow-2g") return "low";
 
-  const memory = (navigator as Record<string, unknown>).deviceMemory as number | undefined;
+  const memory = (navigator as unknown as Record<string, unknown>)["deviceMemory"] as
+    | number
+    | undefined;
   if (memory && memory < 4) return "low";
   if (memory && memory < 8) return "medium";
 

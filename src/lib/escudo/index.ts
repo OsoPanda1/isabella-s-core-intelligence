@@ -20,7 +20,7 @@ export type AuthMethod = "api-key" | "session" | "hmac" | "internal" | "supabase
 export interface SecurityContext {
   authenticated: boolean;
   method: AuthMethod;
-  subjectId?: string;
+  subjectId?: string | undefined;
   roles: string[];
   permissions: string[];
   level: SecurityLevel;
@@ -32,7 +32,7 @@ export interface AuthorizationRequest {
   action: string;
   resource: string;
   context: SecurityContext;
-  metadata?: Record<string, unknown>;
+  metadata?: Record<string, unknown> | undefined;
 }
 
 export interface AuthorizationResult {
@@ -45,13 +45,13 @@ export interface AuthorizationResult {
 export interface AuditEvent {
   id: string;
   timestamp: string;
-  subjectId?: string;
+  subjectId?: string | undefined;
   action: string;
   resource: string;
   result: "allowed" | "denied" | "approval_required";
   method: AuthMethod;
   roles: string[];
-  metadata?: Record<string, unknown>;
+  metadata?: Record<string, unknown> | undefined;
 }
 
 export interface RateLimitResult {

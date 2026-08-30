@@ -51,8 +51,7 @@ export function Sidebar({ open, onToggle, activeSection, onSectionChange }: Side
   const [expandedGroup, setExpandedGroup] = useState<string | null>("principal");
 
   const groups = MENU_ITEMS.reduce<Record<string, MenuItem[]>>((acc, item) => {
-    if (!acc[item.group]) acc[item.group] = [];
-    acc[item.group].push(item);
+    (acc[item.group] ??= []).push(item);
     return acc;
   }, {});
 

@@ -101,7 +101,7 @@ export class IsabellaPipeline {
     input: string,
     options?: {
       locale?: string;
-      identity?: { authenticated: boolean; actorId?: string; roles?: string[]; permissions?: string[] };
+      identity?: { authenticated: boolean; actorId?: string | undefined; roles?: string[]; permissions?: string[] };
     },
   ): Promise<PipelineResult> {
     const startedAt = nowIso();
@@ -156,10 +156,10 @@ export class IsabellaPipeline {
     this.setStage("decide");
     const { result: routing, ms: decideMs } = trackStage("decide", () => {
       const route = selectModules(policyResult.intent);
-      const normalizedIdentity = options?.identity
+      const normalizedIdentity: import("../crown").IdentityAssessment = options?.identity
         ? {
             authenticated: options.identity.authenticated,
-            actorId: options.identity.actorId,
+            ...(options.identity.actorId !== undefined ? { actorId: options.identity.actorId } : {}),
             roles: options.identity.roles ?? [],
             permissions: options.identity.permissions ?? [],
             dataScopes: ["turn" as const, "session" as const, "project" as const],
