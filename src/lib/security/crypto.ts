@@ -49,9 +49,8 @@ export function generateRandomHex(length: number): string {
  */
 export function generateSecureUUID(): string {
   const bytes = randomBytes(16);
-  bytes[6] = (bytes[6] & 0x0f) | 0x40; // version 4
-  bytes[8] = (bytes[8] & 0x3f) | 0x80; // variant 1
-  bytes[6] = bytes[6] as number; // narrow after mutation
+  bytes[6] = ((bytes[6] ?? 0) & 0x0f) | 0x40; // version 4
+  bytes[8] = ((bytes[8] ?? 0) & 0x3f) | 0x80; // variant 1
   const hex = bytes.toString("hex");
   return [
     hex.slice(0, 8),
@@ -348,8 +347,7 @@ export function verifySignedToken(
     return { valid: false };
   }
 
-  const [headerB64, payloadB64, signature] = parts;
-  const expectedSignature = createHMAC512(secret, `${headerB64}.${payloadB64}`);
+  const [headerB64, payloadB64, signature] = parts as [string, string, string];
 
   if (!verifyHMAC512(secret, `${headerB64}.${payloadB64}`, signature)) {
     return { valid: false };

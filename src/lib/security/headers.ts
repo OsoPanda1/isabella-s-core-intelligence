@@ -342,7 +342,7 @@ export function createSecureLogEntry(
   timestamp: string;
   level: string;
   message: string;
-  data?: Record<string, unknown>;
+  data?: Record<string, unknown> | undefined;
 } {
   return {
     timestamp: new Date().toISOString(),

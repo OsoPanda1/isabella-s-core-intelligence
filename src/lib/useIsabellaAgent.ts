@@ -235,7 +235,7 @@ export function useIsabellaAgent() {
             content: acc.slice(0, 500),
             source: "system",
             purpose: "Respuesta de Isabella",
-            tags: [routing.intent.category, routing.primary],
+            tags: [routing.primary],
             confidence: routing.epistemicCertainty,
           });
         }
