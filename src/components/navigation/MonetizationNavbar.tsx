@@ -120,8 +120,8 @@ const sampleOperation: EconomicOperation = {
   currency: "MXN",
   status: "settled",
   authorizationId: "auth-001",
-  reversibleUntil: new Date(Date.now() + 48 * 60 * 60 * 1000).toISOString(),
-  createdAt: new Date().toISOString(),
+  reversibleUntil: "2026-09-05T18:00:00.000Z",
+  createdAt: "2026-09-03T18:00:00.000Z",
 };
 
 export function MonetizationNavbar() {
