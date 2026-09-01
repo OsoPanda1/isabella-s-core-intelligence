@@ -31,11 +31,11 @@ function uid(prefix: string): string {
 
 export function crownRiskToAbx(risk: RiskLevel): AbxRisk {
   switch (risk) {
-    case "R4_critical":
+    case "critical":
       return "critical";
-    case "R3_high":
+    case "high":
       return "high";
-    case "R2_moderate":
+    case "medium":
       return "normal";
     default:
       return "low";
